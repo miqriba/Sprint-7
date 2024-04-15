@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ShipContext } from "../context/context";
 
 function NavBar() {
+  const { openModal, log, setLog, formData, loggedUser, setLoggedUser } =
+    useContext(ShipContext);
+
   return (
     <div style={{ width: "100vw" }}>
       <div
         style={{
           width: "100%",
+          padding: "2rem",
         }}
         className="m-0 d-flex justify-content-between align-items-center"
       >
@@ -20,8 +26,45 @@ function NavBar() {
         </Link>
 
         <div className="d-flex flex-row">
-          <button className="text-nowrap rounded-0">LOG IN</button>
-          <button className="text-nowrap rounded-0">SIGN UP</button>
+          {!log ? (
+            <button
+              className="text-nowrap rounded-0 m-1"
+              onClick={() => openModal("login")}
+            >
+              LOG IN
+            </button>
+          ) : null}
+          {!log ? (
+            <button
+              className="text-nowrap rounded-0 m-1"
+              onClick={() => openModal("signup")}
+            >
+              SIGN UP
+            </button>
+          ) : null}
+          {log ? (
+            <p
+              style={{
+                color: "#eee",
+                margin: "0px",
+                marginRight: "1rem",
+                textAlign: "center",
+                alignSelf: "center",
+              }}
+            >{`Logged in as: ${loggedUser.email}`}</p>
+          ) : null}
+          {log ? (
+            <button
+              className="text-nowrap rounded-0 m-1"
+              onClick={() => {
+                setLog(false);
+                console.log("log out successful");
+                setLoggedUser(null);
+              }}
+            >
+              LOG OUT
+            </button>
+          ) : null}
         </div>
       </div>
 

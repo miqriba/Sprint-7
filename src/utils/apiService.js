@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://swapi.dev/api";
+const SHIPS_API_BASE_URL = "https://swapi.dev/api";
 
-const apiService = axios.create({
-  baseURL: API_BASE_URL,
+const apiShipsService = axios.create({
+  baseURL: SHIPS_API_BASE_URL,
 });
 
 // export const fetchData = async () => {
@@ -18,9 +18,23 @@ const apiService = axios.create({
 
 export const fetchData = async (endpoint) => {
   try {
-    const response = await apiService.get(endpoint);
+    const response = await apiShipsService.get(endpoint);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
+
+// intent reqres fallit
+// const AUTH_API_BASE_URL = "https://reqres.in/api";
+// const apiAuthService = axios.create({
+//   baseURL: AUTH_API_BASE_URL,
+// });
+// export const fetchData2 = async (endpoint) => {
+//   try {
+//     const response = await apiAuthService.get(endpoint);
+//     return response.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
