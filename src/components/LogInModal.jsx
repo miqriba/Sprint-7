@@ -35,6 +35,7 @@ function LoginModal({ onClose }) {
         console.log(user.email);
         setLoggedUser(user);
         setLog(true);
+        closeModal("login");
 
         // ...
       })

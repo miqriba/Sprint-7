@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useContext } from "react";
 import { ShipContext } from "../context/context";
+import { useNavigate } from "react-router-dom";
 
 function StarShips() {
   const {
@@ -9,7 +10,21 @@ function StarShips() {
     setCurrentStarship,
     starshipsToRender,
     setStarshipsToRender,
+    log,
+    openModal,
   } = useContext(ShipContext);
+
+  const navigate = useNavigate();
+
+  // TODO: falta redirigir automaticamente a Starships después del login
+  useEffect(() => {
+    if (log) {
+      navigate("/starships");
+    } else {
+      navigate("/");
+      openModal("login");
+    }
+  }, [log, navigate]);
 
   const handleShipClick = (ship) => {
     setCurrentStarship(ship);

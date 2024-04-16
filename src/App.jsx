@@ -5,6 +5,7 @@ import LogInModal from "./components/LogInModal";
 import SignUpModal from "./components/SignUpModal";
 import StarShipDetail from "./components/StarShipDetail";
 import NavBar from "./components/NavBar";
+import MustLogInMessage from "./components/MustLogInMessage.jsx";
 import { useState, useEffect } from "react";
 import { ShipContext } from "./context/context";
 import { fetchData } from "./utils/apiService";
