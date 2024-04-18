@@ -3,24 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext, useState } from "react";
 import { ShipContext } from "../context/context";
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 // TODO: Falta feedback 'exito' / 'faltan campos'
 
 function LoginModal({ onClose }) {
-  const {
-    showModalLogIn,
-    closeModal,
-    app,
-    log,
-    setLog,
-    loggedUser,
-    setLoggedUser,
-  } = useContext(ShipContext);
+  const { showModalLogIn, closeModal, app, setLog, setLoggedUser } =
+    useContext(ShipContext);
 
   const [formData, setFormData] = useState({ email: "", password: "" });
 
@@ -32,7 +21,6 @@ function LoginModal({ onClose }) {
         // Signed up
         const user = userCredential.user;
         console.log("Log in successful");
-        console.log(user.email);
         setLoggedUser(user);
         setLog(true);
         closeModal("login");
@@ -42,7 +30,7 @@ function LoginModal({ onClose }) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log("error logging in: " + error.message);
+        console.log("error logging in: " + errorMessage);
         // ..
       });
   }

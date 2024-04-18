@@ -6,6 +6,16 @@ const apiShipsService = axios.create({
   baseURL: SHIPS_API_BASE_URL,
 });
 
+export const fetchFunction = async (url) => {
+  try {
+    const response = await fetch(url);
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log("Fetch error: " + error);
+  }
+};
+
 // export const fetchData = async () => {
 
 //   try {

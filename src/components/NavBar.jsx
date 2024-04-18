@@ -1,10 +1,11 @@
 import React from "react";
+import Bar from "./Bar";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ShipContext } from "../context/context";
 
 function NavBar() {
-  const { openModal, log, setLog, formData, loggedUser, setLoggedUser } =
+  const { openModal, log, setLog, loggedUser, setLoggedUser } =
     useContext(ShipContext);
 
   return (
@@ -51,7 +52,9 @@ function NavBar() {
                 textAlign: "center",
                 alignSelf: "center",
               }}
-            >{`Logged in as: ${loggedUser.email}`}</p>
+            >
+              {`Logged in as: ${loggedUser.email}`}
+            </p>
           ) : null}
           {log ? (
             <button
@@ -68,14 +71,7 @@ function NavBar() {
         </div>
       </div>
 
-      <div
-        style={{
-          border: "1px #999",
-          borderStyle: "solid none solid none",
-          width: "100%",
-        }}
-        className="d-flex justify-content-center border-secondary"
-      >
+      <Bar className="justify-content-center">
         <Link
           style={{
             color: "white",
@@ -94,7 +90,7 @@ function NavBar() {
         >
           STARSHIPS
         </Link>
-      </div>
+      </Bar>
     </div>
   );
 }
